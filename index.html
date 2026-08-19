@@ -12,10 +12,11 @@
         }
 
         body {
-            font-family: '맑은 고딕', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            font-family: 'Pretendard', '맑은 고딕', sans-serif;
+            background-color: #0b0d10;
+            color: #d1d5db;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* 1. 상단 네비게이션 바 */
@@ -24,195 +25,337 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: rgba(11, 13, 16, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(8px);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #0056b3;
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 28px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #444;
-            font-weight: 600;
+            color: #9ca3af;
+            font-weight: 500;
+            font-size: 15px;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: #0056b3;
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
         }
 
-        /* 2. 메인 배너 (Hero Section) */
-        .hero-section {
-            background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-                url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            color: white;
+        .nav-right {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            gap: 15px;
+        }
+
+        .btn-consult {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-consult:hover {
+            border-color: #ef4444;
+            background-color: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+        }
+
+        /* 2. 메인 히어로 배너 & 배경 Canvas */
+        .hero-section {
+            position: relative;
+            padding: 100px 8% 80px 8%;
+            background: radial-gradient(circle at 80% 20%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: #ef4444;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .hero-section h1 {
-            font-size: 38px;
-            margin-bottom: 12px;
+            font-size: 44px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.3;
             letter-spacing: -1px;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
         }
 
         .hero-section p {
-            font-size: 18px;
-            opacity: 0.9;
+            font-size: 16px;
+            color: #9ca3af;
+            max-width: 650px;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
         }
 
-        /* 공통 섹션 레이아웃 */
+        /* 공통 레이아웃 및 효과 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
+        }
+
+        .sub-tag {
+            display: inline-block;
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .sub-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 10px;
+            height: 2px;
+            background-color: #ef4444;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 30px;
+            font-size: 28px;
+            color: #ffffff;
             margin-bottom: 40px;
-            color: #1e293b;
-            position: relative;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: #007bff;
-            margin: 10px auto 0;
-        }
-
-        /* 3. 비전 & 카드 */
-        .vision-grid {
+        /* 3. 회사 소개 (좌측 이미지 + 우측 텍스트) */
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img-box {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.85);
+            transition: transform 0.4s ease;
+        }
+
+        .about-img-box:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-content h3 {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .about-content p {
+            color: #9ca3af;
+            font-size: 15px;
             margin-bottom: 20px;
         }
 
-        .card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            border-top: 4px solid #007bff;
+        .badge-list {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            flex-wrap: wrap;
         }
 
-        .card h3 {
-            font-size: 20px;
-            color: #0056b3;
+        .badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #d1d5db;
+        }
+
+        /* 4. 카드 및 그리드 스타일 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .dark-card {
+            background-color: #12161f;
+            padding: 35px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .dark-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15);
+        }
+
+        .dark-card h3 {
+            color: #ffffff;
+            font-size: 19px;
             margin-bottom: 15px;
         }
 
-        /* 4. 회사 약력 (타임라인) */
+        .dark-card p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* 5. 타임라인 (약력) */
         .timeline {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 30px;
-            border-left: 3px solid #007bff;
+            padding-left: 25px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -38px;
-            top: 5px;
-            width: 13px;
-            height: 13px;
+            left: -31px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background-color: #007bff;
-            border: 3px solid white;
+            background-color: #ef4444;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
         }
 
         .timeline-year {
-            font-weight: bold;
-            font-size: 18px;
-            color: #0056b3;
-            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #ef4444;
+            margin-bottom: 6px;
         }
 
         .timeline-desc {
-            background: white;
-            padding: 15px 20px;
+            background: #12161f;
+            padding: 18px 22px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            color: #475569;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #d1d5db;
+            font-size: 14px;
         }
 
-        /* 5. 회사 개요 테이블 */
+        /* 6. 개요 테이블 */
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            background-color: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: 8px;
+            background-color: #12161f;
+            border-radius: 12px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .info-table th, .info-table td {
-            padding: 16px 20px;
+            padding: 18px 24px;
             text-align: left;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
         }
 
         .info-table th {
-            background-color: #f1f5f9;
+            background-color: rgba(255, 255, 255, 0.02);
             width: 25%;
-            color: #334155;
-            font-weight: bold;
+            color: #ffffff;
+            font-weight: 600;
         }
 
-        /* 6. 주요 생산 품목 & 인증서 & 오시는길 카드 스타일 */
-        .bg-light {
-            background-color: #ffffff;
+        .info-table td {
+            color: #9ca3af;
         }
 
-        .catalog-container {
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-            align-items: center;
-        }
-
+        /* 7. 카탈로그/이미지 카드 */
         .catalog-card {
-            width: 100%;
-            max-width: 950px;
-            background-color: #fff;
+            background-color: #12161f;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(239, 68, 68, 0.4);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
         }
 
         .catalog-card img {
@@ -222,33 +365,34 @@
         }
 
         .catalog-caption {
-            padding: 20px 25px;
-            background-color: #f8fafc;
-            border-top: 1px solid #e2e8f0;
+            padding: 22px 28px;
+            background-color: #12161f;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .catalog-caption h4 {
-            font-size: 20px;
-            color: #0f172a;
-            margin-bottom: 5px;
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
 
         .catalog-caption p {
             font-size: 14px;
-            color: #64748b;
+            color: #9ca3af;
         }
 
-        /* 7. 하단 푸터 */
+        /* 8. 푸터 */
         footer {
-            background-color: #1e293b;
-            color: #94a3b8;
-            padding: 40px 20px;
-            font-size: 14px;
+            background-color: #07080a;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 45px 20px;
+            font-size: 13px;
+            color: #6b7280;
             text-align: center;
         }
 
         footer strong {
-            color: white;
+            color: #d1d5db;
         }
     </style>
 </head>
@@ -258,42 +402,73 @@
     <div class="navbar">
         <div class="logo">이레공조(주)</div>
         <ul class="nav-links">
-            <li><a href="#about">회사소개</a></li>
-            <li><a href="#history">회사약력</a></li>
+            <li><a href="#about" class="active">About Us</a></li>
             <li><a href="#vision">비전</a></li>
+            <li><a href="#history">회사약력</a></li>
             <li><a href="#products">주요생산품목</a></li>
             <li><a href="#certifications">인증현황</a></li>
             <li><a href="#location">오시는 길</a></li>
         </ul>
+        <div class="nav-right">
+            <a href="#location" class="btn-consult">상담 문의 &rarr;</a>
+        </div>
     </div>
 
-    <!-- 메인 배너 -->
+    <!-- 메인 히어로 배너 (마우스 연결 입자 애니메이션 적용) -->
     <div class="hero-section">
-        <h1>이레공조(주) 회사소개</h1>
-        <p>자동차용 열교환기 및 알루미늄 브레이징 전문 기업</p>
+        <canvas id="bg-canvas"></canvas>
+        <div class="hero-content">
+            <div class="breadcrumb">Home / About Us</div>
+            <h1>현장을 아는 기술로<br>최고의 부품을 만듭니다</h1>
+            <p>자동차용 열교환기 및 알루미늄 브레이징 전문기업. 컨설팅부터 개발, 양산 및 품질보증까지 한 호흡으로 지원합니다.</p>
+        </div>
     </div>
 
-    <!-- 비전 & 경영이념 -->
-    <div class="container" id="vision">
+    <!-- 대표 이미지 & 기업 설명 섹션 -->
+    <div class="container" id="about">
+        <span class="sub-tag">Company</span>
+        <h2 class="section-title">이레공조(주) 소개</h2>
+        <div class="about-grid">
+            <div class="about-img-box">
+                <img src="./catalog1.jpg" alt="이레공조 생산 현장">
+            </div>
+            <div class="about-content">
+                <h3>자동차 열교환기 및 EV 쿨링 솔루션 분야를 주도하는 전문기업입니다.</h3>
+                <p>자동차, 전기차 전장, 중장비 등 다양한 산업 분야의 냉난방 및 열관리 시스템 구축에 전념해 왔으며, 최신 정밀 설비와 고품질 브레이징 기술을 기반으로 개발부터 양산까지 총괄 지원합니다.</p>
+                <p>스마트팩토리 MES 시스템을 도입하여 품질 불만 ZERO, 재해 ZERO를 실현하며 글로벌 경쟁력을 갖춘 제품을 공급하고 있습니다.</p>
+                <div class="badge-list">
+                    <span class="badge">EST. 2021</span>
+                    <span class="badge">IATF 16949</span>
+                    <span class="badge">ISO 14001</span>
+                    <span class="badge">스마트팩토리 MES</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 비전 및 경영 이념 -->
+    <div class="container" id="vision" style="padding-top: 0;">
+        <span class="sub-tag">Vision & Values</span>
         <h2 class="section-title">비전 및 경영 이념</h2>
-        <div class="vision-grid">
-            <div class="card">
+        <div class="grid-3">
+            <div class="dark-card">
                 <h3>VISION 2026</h3>
-                <p><strong>고객불만 ZERO / 재해 ZERO / 매출 150억 달성</strong><br>품질 혁신과 기술 개발로 글로벌 경쟁력을 확보합니다.</p>
+                <p><strong style="color: #ef4444;">고객불만 ZERO / 재해 ZERO / 매출 150억 달성</strong><br><br>품질 혁신과 기술 개발을 통해 글로벌 자동차 부품 시장에서의 경쟁력을 확보합니다.</p>
             </div>
-            <div class="card">
+            <div class="dark-card">
                 <h3>사훈 (行不無得)</h3>
-                <p><strong>행함이 없으면 얻는 것도 없다</strong><br>실천 중심의 도전 정신으로 최고 품질의 부품을 제조합니다.</p>
+                <p><strong style="color: #ffffff;">행함이 없으면 얻는 것도 없다</strong><br><br>실천 중심의 도전 정신과 철저한 현장 관리로 최고 품질의 열교환기를 제조합니다.</p>
             </div>
-            <div class="card">
+            <div class="dark-card">
                 <h3>품질 및 시스템</h3>
-                <p><strong>IATF 16949 / ISO 14001 인증</strong><br>스마트팩토리 MES 시스템을 바탕으로 정밀 관리를 실현합니다.</p>
+                <p><strong style="color: #ffffff;">IATF 16949 / ISO 14001</strong><br><br>스마트팩토리 MES 시스템 구축으로 생산 및 품질 데이터 정밀 관리를 실현합니다.</p>
             </div>
         </div>
     </div>
 
     <!-- 회사 약력 -->
     <div class="container" id="history" style="padding-top: 0;">
+        <span class="sub-tag">History</span>
         <h2 class="section-title">회사 약력</h2>
         <div class="timeline">
             <div class="timeline-item">
@@ -318,13 +493,14 @@
             </div>
             <div class="timeline-item">
                 <div class="timeline-year">2026년</div>
-                <div class="timeline-desc"><strong>VISION 2026 선포</strong> (품질 ZERO, 재해 ZERO, 매출 150억 목표)</div>
+                <div class="timeline-desc"><strong style="color: #ef4444;">VISION 2026 선포</strong> (품질 ZERO, 재해 ZERO, 매출 150억 목표)</div>
             </div>
         </div>
     </div>
 
     <!-- 회사 개요 -->
-    <div class="container" id="about" style="padding-top: 0;">
+    <div class="container" style="padding-top: 0;">
+        <span class="sub-tag">Overview</span>
         <h2 class="section-title">회사 개요</h2>
         <table class="info-table">
             <tr>
@@ -355,97 +531,181 @@
     </div>
 
     <!-- 주요 생산 품목 -->
-    <div class="bg-light">
-        <div class="container" id="products">
-            <h2 class="section-title">주요 생산 품목</h2>
-            <div class="catalog-container">
-                
-                <!-- 카탈로그 1 -->
-                <div class="catalog-card">
-                    <img src="./catalog1.jpg" alt="Evaporator, Condenser, Radiator, Heater Core">
-                    <div class="catalog-caption">
-                        <h4>1. 주요 열교환기 모듈</h4>
-                        <p>Evaporator, Condenser, Radiator, Heater Core 등 고효율 냉난방 핵심 부품</p>
-                    </div>
-                </div>
+    <div class="container" id="products" style="padding-top: 0;">
+        <span class="sub-tag">Products</span>
+        <h2 class="section-title">주요 생산 품목</h2>
 
-                <!-- 카탈로그 2 -->
-                <div class="catalog-card">
-                    <img src="./catalog2.jpg" alt="Optimizing Vehicle Condition - C.R.F.M">
-                    <div class="catalog-caption">
-                        <h4>2. 차량 조건 최적화 부품 (C.R.F.M)</h4>
-                        <p>Optimizing Vehicle Condition - C.R.F.M 및 냉각 팬 통합 모듈</p>
-                    </div>
-                </div>
+        <div class="catalog-card">
+            <img src="./catalog1.jpg" alt="주요 열교환기 모듈">
+            <div class="catalog-caption">
+                <h4>1. 주요 열교환기 모듈</h4>
+                <p>Evaporator, Condenser, Radiator, Heater Core 등 고효율 냉난방 핵심 부품</p>
+            </div>
+        </div>
 
-                <!-- 카탈로그 3 -->
-                <div class="catalog-card">
-                    <img src="./catalog3.jpg" alt="상용차 및 중장비용 열교환 부품">
-                    <div class="catalog-caption">
-                        <h4>3. 상용차 및 중장비용 응용 부품</h4>
-                        <p>타타대우, 현대 미니굴삭기/휠로더/포크리프트, GM 차량용 콘덴서 등 라인업</p>
-                    </div>
-                </div>
+        <div class="catalog-card">
+            <img src="./catalog2.jpg" alt="차량 조건 최적화 부품">
+            <div class="catalog-caption">
+                <h4>2. 차량 조건 최적화 부품 (C.R.F.M)</h4>
+                <p>Optimizing Vehicle Condition - C.R.F.M 및 냉각 팬 통합 모듈</p>
+            </div>
+        </div>
 
-                <!-- 카탈로그 4 -->
-                <div class="catalog-card">
-                    <img src="./catalog4.jpg" alt="차종별 맞춤형 Evaporator">
-                    <div class="catalog-caption">
-                        <h4>4. 차종별 맞춤형 Evaporator</h4>
-                        <p>타타대우 노부스/프리마, 쌍용 카이런, GM 칼로스 등 차종별 정밀 제작 부품</p>
-                    </div>
-                </div>
+        <div class="catalog-card">
+            <img src="./catalog3.jpg" alt="상용차 및 중장비용 응용 부품">
+            <div class="catalog-caption">
+                <h4>3. 상용차 및 중장비용 응용 부품</h4>
+                <p>타타대우, 현대 미니굴삭기/휠로더/포크리프트, GM 차량용 콘덴서 등 라인업</p>
+            </div>
+        </div>
 
-                <!-- 카탈로그 5 -->
-                <div class="catalog-card">
-                    <img src="./catalog5.jpg" alt="CAC, CRFM 및 HDR PIPE ASM">
-                    <div class="catalog-caption">
-                        <h4>5. CAC, CRFM 및 HDR PIPE ASM</h4>
-                        <p>CAC, CRFM, 알루미늄 정밀 헤더 파이프 조립체(HDR PIPE ASM)</p>
-                    </div>
-                </div>
+        <div class="catalog-card">
+            <img src="./catalog4.jpg" alt="차종별 맞춤형 Evaporator">
+            <div class="catalog-caption">
+                <h4>4. 차종별 맞춤형 Evaporator</h4>
+                <p>타타대우 노부스/프리마, 쌍용 카이런, GM 칼로스 등 차종별 정밀 제작 부품</p>
+            </div>
+        </div>
 
+        <div class="catalog-card">
+            <img src="./catalog5.jpg" alt="CAC, CRFM 및 HDR PIPE ASM">
+            <div class="catalog-caption">
+                <h4>5. CAC, CRFM 및 HDR PIPE ASM</h4>
+                <p>CAC, CRFM, 알루미늄 정밀 헤더 파이프 조립체(HDR PIPE ASM)</p>
             </div>
         </div>
     </div>
 
-    <!-- 인증 현황 섹션 -->
-    <div class="container" id="certifications">
+    <!-- 인증 현황 -->
+    <div class="container" id="certifications" style="padding-top: 0;">
+        <span class="sub-tag">Certifications</span>
         <h2 class="section-title">인증 현황</h2>
-        <div class="catalog-container">
-            <div class="catalog-card">
-                <img src="./iatf.jpg" alt="IATF 16949 및 ISO 14001 품질/환경경영시스템 인증서">
-                <div class="catalog-caption">
-                    <h4>IATF 16949 & ISO 14001 인증</h4>
-                    <p>자동차 품질경영시스템(IATF 16949:2016) 및 환경경영시스템(ISO 14001:2015) 국제 인증을 보유하여 철저한 품질/환경 관리 체계를 구축하였습니다.</p>
-                </div>
+        <div class="catalog-card">
+            <img src="./iatf.jpg" alt="IATF 16949 및 ISO 14001 인증서">
+            <div class="catalog-caption">
+                <h4>IATF 16949 & ISO 14001 인증</h4>
+                <p>자동차 품질경영시스템(IATF 16949:2016) 및 환경경영시스템(ISO 14001:2015) 국제 인증을 보유하여 철저한 품질 및 환경 관리 체계를 구축하였습니다.</p>
             </div>
         </div>
     </div>
 
-    <!-- 오시는 길 (지도 추가) -->
-    <div class="bg-light">
-        <div class="container" id="location">
-            <h2 class="section-title">오시는 길</h2>
-            <div class="catalog-container">
-                <div class="catalog-card">
-                    <img src="./지도jpg.jpg" alt="이레공조(주) 위치 지도">
-                    <div class="catalog-caption">
-                        <h4>사업장 위치</h4>
-                        <p><strong>주소:</strong> 충남 예산군 삽교읍 두루머리길 38-23 이레공조㈜</p>
-                        <p><strong>대표전화:</strong> 041-337-9397~8 | <strong>팩스:</strong> 041-337-9399</p>
-                    </div>
-                </div>
+    <!-- 오시는 길 -->
+    <div class="container" id="location" style="padding-top: 0;">
+        <span class="sub-tag">Location</span>
+        <h2 class="section-title">오시는 길</h2>
+        <div class="catalog-card">
+            <img src="./지도jpg.jpg" alt="이레공조 위치 지도">
+            <div class="catalog-caption">
+                <h4>사업장 위치 및 연락처</h4>
+                <p><strong>주소:</strong> 충남 예산군 삽교읍 두루머리길 38-23 이레공조㈜</p>
+                <p><strong>대표전화:</strong> 041-337-9397~8 | <strong>팩스:</strong> 041-337-9399</p>
             </div>
         </div>
     </div>
 
-    <!-- 하단 푸터 -->
+    <!-- 푸터 -->
     <footer>
         <p><strong>이레공조㈜</strong> | 대표이사: 장용재 | 충남 예산군 삽교읍 두루머리길 38-23</p>
-        <p>TEL: 041-337-9397~8 | FAX: 041-337-9399</p>
-        <p style="margin-top: 15px; font-size: 12px; color: #64748b;">Copyright © Ire Climate Control Inc. All Rights Reserved.</p>
+        <p style="margin-top: 5px;">TEL: 041-337-9397~8 | FAX: 041-337-9399</p>
+        <p style="margin-top: 15px; font-size: 11px;">Copyright © Ire Climate Control Inc. All Rights Reserved.</p>
     </footer>
 
+    <!-- 마우스 반응 입자 및 선 연결 애니메이션 스크립트 -->
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const numParticles = 65;
+        const mouse = { x: null, y: null, radius: 150 };
+
+        canvas.parentElement.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        canvas.parentElement.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 1.2;
+                this.vy = (Math.random() - 0.5) * 1.2;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(239, 68, 68, 0.7)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(239, 68, 68, ${0.35 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    const mdx = particles[i].x - mouse.x;
+                    const mdy = particles[i].y - mouse.y;
+                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+                    if (mdist < mouse.radius) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(239, 68, 68, ${0.6 * (1 - mdist / mouse.radius)})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
