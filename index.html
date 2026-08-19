@@ -41,6 +41,8 @@
             display: flex;          /* 이미지와 글자 수평 정렬 */
             align-items: center;    /* 세로 중앙 정렬 */
             gap: 10px;              /* 로고와 글자 사이 간격 */
+            text-decoration: none;  /* 링크 밑줄 제거 */
+            cursor: pointer;        /* 마우스 커서 손가락 모양 */
         }
 
         .logo img {
@@ -409,10 +411,11 @@
 
     <!-- 상단 네비게이션 바 -->
     <div class="navbar">
-        <div class="logo">
+        <!-- 로고 클릭 시 최상단(홈)으로 이동 -->
+        <a href="#" class="logo">
             <img src="./logo.png" alt="이레공조 로고">
             이레공조(주)
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#about" class="active">About Us</a></li>
             <li><a href="#vision">비전</a></li>
