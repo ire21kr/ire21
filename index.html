@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이레공조(주) - 회사소개</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: '맑은 고딕', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 1. 상단 네비게이션 바 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0056b3;
+        }
+
+        /* 2. 메인 배너 (Hero Section) */
+        .hero-section {
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* 공통 섹션 레이아웃 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 40px;
+            color: #1e293b;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #007bff;
+            margin: 10px auto 0;
+        }
+
+        /* 3. 비전 & 카드 */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid #007bff;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        /* 4. 회사 약력 (타임라인) */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 30px;
+            border-left: 3px solid #007bff;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #007bff;
+            border: 3px solid white;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            font-size: 18px;
+            color: #0056b3;
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            color: #475569;
+        }
+
+        /* 5. 회사 개요 테이블 */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .info-table th, .info-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-table th {
+            background-color: #f1f5f9;
+            width: 25%;
+            color: #334155;
+            font-weight: bold;
+        }
+
+        /* 6. 주요 생산 품목 & 인증서 & 오시는길 카드 스타일 */
+        .bg-light {
+            background-color: #ffffff;
+        }
+
+        .catalog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .catalog-card {
+            width: 100%;
+            max-width: 950px;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .catalog-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .catalog-caption {
+            padding: 20px 25px;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .catalog-caption h4 {
+            font-size: 20px;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .catalog-caption p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* 7. 하단 푸터 */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 40px 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        footer strong {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 네비게이션 바 -->
+    <div class="navbar">
+        <div class="logo">이레공조(주)</div>
+        <ul class="nav-links">
+            <li><a href="#about">회사소개</a></li>
+            <li><a href="#history">회사약력</a></li>
+            <li><a href="#vision">비전</a></li>
+            <li><a href="#products">주요생산품목</a></li>
+            <li><a href="#certifications">인증현황</a></li>
+            <li><a href="#location">오시는 길</a></li>
+        </ul>
+    </div>
+
+    <!-- 메인 배너 -->
+    <div class="hero-section">
+        <h1>이레공조(주) 회사소개</h1>
+        <p>자동차용 열교환기 및 알루미늄 브레이징 전문 기업</p>
+    </div>
+
+    <!-- 비전 & 경영이념 -->
+    <div class="container" id="vision">
+        <h2 class="section-title">비전 및 경영 이념</h2>
+        <div class="vision-grid">
+            <div class="card">
+                <h3>VISION 2026</h3>
+                <p><strong>고객불만 ZERO / 재해 ZERO / 매출 150억 달성</strong><br>품질 혁신과 기술 개발로 글로벌 경쟁력을 확보합니다.</p>
+            </div>
+            <div class="card">
+                <h3>사훈 (行不無得)</h3>
+                <p><strong>행함이 없으면 얻는 것도 없다</strong><br>실천 중심의 도전 정신으로 최고 품질의 부품을 제조합니다.</p>
+            </div>
+            <div class="card">
+                <h3>품질 및 시스템</h3>
+                <p><strong>IATF 16949 / ISO 14001 인증</strong><br>스마트팩토리 MES 시스템을 바탕으로 정밀 관리를 실현합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 회사 약력 -->
+    <div class="container" id="history" style="padding-top: 0;">
+        <h2 class="section-title">회사 약력</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2021년 11월</div>
+                <div class="timeline-desc">이레공조㈜ 설립 및 사업 개시 (충남 예산)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022년</div>
+                <div class="timeline-desc">매출 100억원 달성 및 열교환기 양산체계 구축 (사업 안정기)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023년</div>
+                <div class="timeline-desc">매출 130억원 달성 및 신규 아이템 개발 확대</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024년 ~ 2025년</div>
+                <div class="timeline-desc">
+                    IATF 16949 / ISO 14001 인증 취득<br>
+                    스마트팩토리 구축 및 MES 시스템 도입 완료<br>
+                    EV Chiller 및 수냉식 콘덴서 등 전기차 전장 부품 양산화
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2026년</div>
+                <div class="timeline-desc"><strong>VISION 2026 선포</strong> (품질 ZERO, 재해 ZERO, 매출 150억 목표)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 회사 개요 -->
+    <div class="container" id="about" style="padding-top: 0;">
+        <h2 class="section-title">회사 개요</h2>
+        <table class="info-table">
+            <tr>
+                <th>기업명</th>
+                <td>이레공조㈜ (Ire Climate Control Inc.)</td>
+            </tr>
+            <tr>
+                <th>대표이사</th>
+                <td>장용재</td>
+            </tr>
+            <tr>
+                <th>설립일</th>
+                <td>2021년 11월</td>
+            </tr>
+            <tr>
+                <th>주요 사업</th>
+                <td>자동차용 열교환기, EV 전장 쿨링 부품, 알루미늄 브레이징 제조</td>
+            </tr>
+            <tr>
+                <th>주요 설비</th>
+                <td>NB FURNACE(연속로) 2기, Laser 자동용접 로봇(1~3호기), 3D 측정기 등</td>
+            </tr>
+            <tr>
+                <th>사업장 위치</th>
+                <td>충남 예산군 삽교읍 두루머리길 38-23</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 주요 생산 품목 -->
+    <div class="bg-light">
+        <div class="container" id="products">
+            <h2 class="section-title">주요 생산 품목</h2>
+            <div class="catalog-container">
+                
+                <!-- 카탈로그 1 -->
+                <div class="catalog-card">
+                    <img src="./catalog1.jpg" alt="Evaporator, Condenser, Radiator, Heater Core">
+                    <div class="catalog-caption">
+                        <h4>1. 주요 열교환기 모듈</h4>
+                        <p>Evaporator, Condenser, Radiator, Heater Core 등 고효율 냉난방 핵심 부품</p>
+                    </div>
+                </div>
+
+                <!-- 카탈로그 2 -->
+                <div class="catalog-card">
+                    <img src="./catalog2.jpg" alt="Optimizing Vehicle Condition - C.R.F.M">
+                    <div class="catalog-caption">
+                        <h4>2. 차량 조건 최적화 부품 (C.R.F.M)</h4>
+                        <p>Optimizing Vehicle Condition - C.R.F.M 및 냉각 팬 통합 모듈</p>
+                    </div>
+                </div>
+
+                <!-- 카탈로그 3 -->
+                <div class="catalog-card">
+                    <img src="./catalog3.jpg" alt="상용차 및 중장비용 열교환 부품">
+                    <div class="catalog-caption">
+                        <h4>3. 상용차 및 중장비용 응용 부품</h4>
+                        <p>타타대우, 현대 미니굴삭기/휠로더/포크리프트, GM 차량용 콘덴서 등 라인업</p>
+                    </div>
+                </div>
+
+                <!-- 카탈로그 4 -->
+                <div class="catalog-card">
+                    <img src="./catalog4.jpg" alt="차종별 맞춤형 Evaporator">
+                    <div class="catalog-caption">
+                        <h4>4. 차종별 맞춤형 Evaporator</h4>
+                        <p>타타대우 노부스/프리마, 쌍용 카이런, GM 칼로스 등 차종별 정밀 제작 부품</p>
+                    </div>
+                </div>
+
+                <!-- 카탈로그 5 -->
+                <div class="catalog-card">
+                    <img src="./catalog5.jpg" alt="CAC, CRFM 및 HDR PIPE ASM">
+                    <div class="catalog-caption">
+                        <h4>5. CAC, CRFM 및 HDR PIPE ASM</h4>
+                        <p>CAC, CRFM, 알루미늄 정밀 헤더 파이프 조립체(HDR PIPE ASM)</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 인증 현황 섹션 -->
+    <div class="container" id="certifications">
+        <h2 class="section-title">인증 현황</h2>
+        <div class="catalog-container">
+            <div class="catalog-card">
+                <img src="./iatf.jpg" alt="IATF 16949 및 ISO 14001 품질/환경경영시스템 인증서">
+                <div class="catalog-caption">
+                    <h4>IATF 16949 & ISO 14001 인증</h4>
+                    <p>자동차 품질경영시스템(IATF 16949:2016) 및 환경경영시스템(ISO 14001:2015) 국제 인증을 보유하여 철저한 품질/환경 관리 체계를 구축하였습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 오시는 길 (지도 추가) -->
+    <div class="bg-light">
+        <div class="container" id="location">
+            <h2 class="section-title">오시는 길</h2>
+            <div class="catalog-container">
+                <div class="catalog-card">
+                    <img src="./지도jpg.jpg" alt="이레공조(주) 위치 지도">
+                    <div class="catalog-caption">
+                        <h4>사업장 위치</h4>
+                        <p><strong>주소:</strong> 충남 예산군 삽교읍 두루머리길 38-23 이레공조㈜</p>
+                        <p><strong>대표전화:</strong> 041-337-9397~8 | <strong>팩스:</strong> 041-337-9399</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단 푸터 -->
+    <footer>
+        <p><strong>이레공조㈜</strong> | 대표이사: 장용재 | 충남 예산군 삽교읍 두루머리길 38-23</p>
+        <p>TEL: 041-337-9397~8 | FAX: 041-337-9399</p>
+        <p style="margin-top: 15px; font-size: 12px; color: #64748b;">Copyright © Ire Climate Control Inc. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
