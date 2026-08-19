@@ -657,14 +657,15 @@
             color: #9ca3af;
         }
 
-        /* 9. 카탈로그/이미지 카드 */
+        /* 9. 카탈로그/이미지 카드 (이미지 크기 축소 및 중앙 정렬 적용) */
         .catalog-card {
             background-color: #12161f;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            margin-bottom: 30px;
+            margin: 0 auto 30px auto;
             transition: all 0.3s ease;
+            max-width: 750px;
         }
 
         .catalog-card:hover {
@@ -675,14 +676,18 @@
 
         .catalog-card img {
             width: 100%;
+            max-width: 600px;
             height: auto;
             display: block;
+            margin: 20px auto 0 auto;
+            border-radius: 8px;
         }
 
         .catalog-caption {
             padding: 22px 28px;
             background-color: #12161f;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
         }
 
         .catalog-caption h4 {
@@ -894,7 +899,7 @@
         </div>
     </div>
 
-    <!-- 생산 CAPA & 주요 설비 현황 섹션 [신규 추가] -->
+    <!-- 생산 CAPA & 주요 설비 현황 섹션 -->
     <div class="container" id="capa" style="padding-top: 0;">
         <span class="sub-tag">Capacity & Facilities</span>
         <h2 class="section-title">생산 CAPA 및 설비 현황</h2>
