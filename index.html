@@ -38,15 +38,15 @@
             font-weight: 800;
             color: #ffffff;
             letter-spacing: -0.5px;
-            display: flex;          /* 이미지와 글자 수평 정렬 */
-            align-items: center;    /* 세로 중앙 정렬 */
-            gap: 10px;              /* 로고와 글자 사이 간격 */
-            text-decoration: none;  /* 링크 밑줄 제거 */
-            cursor: pointer;        /* 마우스 커서 손가락 모양 */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .logo img {
-            height: 32px;           /* 로고 높이 */
+            height: 32px;
             width: auto;
             display: block;
         }
@@ -54,14 +54,14 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 28px;
+            gap: 22px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #9ca3af;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.2s;
         }
 
@@ -197,7 +197,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* 3. 회사 소개 (좌측 이미지 + 우측 텍스트) */
+        /* 3. 회사 소개 */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
@@ -253,7 +253,311 @@
             color: #d1d5db;
         }
 
-        /* 4. 카드 및 그리드 스타일 */
+        /* 대표이사 인사말 박스 */
+        .ceo-greeting-card {
+            background-color: #12161f;
+            border-radius: 16px;
+            padding: 45px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .ceo-greeting-card h3 {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .ceo-greeting-card p {
+            color: #9ca3af;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .ceo-signature {
+            margin-top: 30px;
+            text-align: right;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .ceo-signature span {
+            color: #ef4444;
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        /* 4. 조직도 (Organization Chart) 커스텀 스타일 */
+        .org-chart-wrapper {
+            background-color: #12161f;
+            border-radius: 16px;
+            padding: 45px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .org-ceo {
+            display: inline-block;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 14px 45px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+        }
+
+        .org-line-v {
+            width: 2px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 auto;
+        }
+
+        .org-line-h {
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 auto 30px auto;
+            width: 82%;
+        }
+
+        .org-sector-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .org-sector-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .org-line-h { display: none; }
+        }
+
+        @media (max-width: 550px) {
+            .org-sector-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .org-sector-card {
+            background-color: #0b0d10;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .org-sector-card:hover {
+            border-color: #ef4444;
+            transform: translateY(-4px);
+        }
+
+        .org-sector-title {
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .org-sub-header {
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: left;
+            margin-top: 6px;
+            padding-left: 2px;
+            border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+            padding-bottom: 4px;
+        }
+
+        .org-team-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .org-team-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #d1d5db;
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .org-team-item.sub-item {
+            background-color: rgba(255, 255, 255, 0.015);
+            color: #9ca3af;
+            font-size: 12px;
+            margin-left: 8px;
+            border-left: 2px solid rgba(239, 68, 68, 0.5);
+            text-align: left;
+        }
+
+        .org-team-item.process-line {
+            background-color: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* 인원 현황 표 */
+        .headcount-table-wrapper {
+            margin-top: 35px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
+            text-align: left;
+        }
+
+        .headcount-title {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .headcount-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: center;
+            background-color: #0b0d10;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .headcount-table th, .headcount-table td {
+            padding: 10px 6px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .headcount-table th {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .headcount-table td {
+            color: #9ca3af;
+        }
+
+        .headcount-table tr:last-child th,
+        .headcount-table tr:last-child td {
+            background-color: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* 5. CAPA & 설비현황 테이블/카드 공통 스타일 */
+        .capa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .capa-card {
+            background-color: #12161f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .capa-card:hover {
+            border-color: #ef4444;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.15);
+        }
+
+        .capa-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .capa-card h4 {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .capa-card .number {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .capa-card .unit {
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        .facility-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #12161f;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 15px;
+        }
+
+        .facility-table th, .facility-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .facility-table th {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .facility-table td {
+            color: #9ca3af;
+        }
+
+        .facility-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: #ffffff;
+        }
+
+        /* 6. 카드 및 그리드 스타일 */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -285,7 +589,7 @@
             font-size: 14px;
         }
 
-        /* 5. 타임라인 (약력) */
+        /* 7. 타임라인 */
         .timeline {
             position: relative;
             padding-left: 25px;
@@ -325,7 +629,7 @@
             font-size: 14px;
         }
 
-        /* 6. 개요 테이블 */
+        /* 8. 개요 테이블 */
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -353,7 +657,7 @@
             color: #9ca3af;
         }
 
-        /* 7. 카탈로그/이미지 카드 */
+        /* 9. 카탈로그/이미지 카드 */
         .catalog-card {
             background-color: #12161f;
             border-radius: 12px;
@@ -392,7 +696,7 @@
             color: #9ca3af;
         }
 
-        /* 8. 푸터 */
+        /* 10. 푸터 */
         footer {
             background-color: #07080a;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -411,13 +715,15 @@
 
     <!-- 상단 네비게이션 바 -->
     <div class="navbar">
-        <!-- 로고 클릭 시 최상단(홈)으로 이동 -->
         <a href="#" class="logo">
             <img src="./logo.png" alt="이레공조 로고">
             이레공조(주)
         </a>
         <ul class="nav-links">
             <li><a href="#about" class="active">About Us</a></li>
+            <li><a href="#ceo">인사말</a></li>
+            <li><a href="#organization">조직도</a></li>
+            <li><a href="#capa">생산CAPA/설비</a></li>
             <li><a href="#vision">비전</a></li>
             <li><a href="#history">회사약력</a></li>
             <li><a href="#products">주요생산품목</a></li>
@@ -430,7 +736,7 @@
         </div>
     </div>
 
-    <!-- 메인 히어로 배너 (마우스 연결 입자 애니메이션 적용) -->
+    <!-- 메인 히어로 배너 -->
     <div class="hero-section">
         <canvas id="bg-canvas"></canvas>
         <div class="hero-content">
@@ -459,6 +765,217 @@
                     <span class="badge">스마트팩토리 MES</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 대표이사 인사말 섹션 -->
+    <div class="container" id="ceo" style="padding-top: 0;">
+        <span class="sub-tag">CEO Message</span>
+        <h2 class="section-title">대표이사 인사말</h2>
+        <div class="ceo-greeting-card">
+            <h3>"행함이 없으면 얻는 것도 없다(行不無得)의 정직한 기술력으로 최고의 만족을 드리겠습니다."</h3>
+            <p>안녕하십니까, 이레공조㈜ 홈페이지를 방문해 주신 고객 여러분께 진심으로 감사드립니다.</p>
+            <p>이레공조㈜는 자동차 및 산업용 열교환기 전문 기업으로서, 끊임없는 기술 혁신과 철저한 품질 관리를 통해 빠르게 변화하는 자동차 산업의 든든한 파트너로 성장해 왔습니다.</p>
+            <p>우리는 <strong>'행함이 없으면 얻는 것도 없다'</strong>는 사훈을 바탕으로 현장에서 직접 발로 뛰며 실천하는 기술력을 다져왔습니다. 최신 브레이징 설비와 자동화 시스템, 그리고 스마트팩토리 MES 정밀 관리 체계를 바탕으로 고객이 신뢰할 수 있는 최상의 부품을 공급하고 있습니다.</p>
+            <p>전기차 전장 부품 및 고효율 열관리 솔루션 개발을 지속하여 글로벌 시장에서 경쟁력을 인정받는 친환경 기술 기업으로 도약하겠습니다. 앞으로도 고객 여러분의 성공과 발전을 함께 만들어가는 최상의 파트너가 될 것을 약속드립니다.</p>
+            <p>감사합니다.</p>
+            
+            <div class="ceo-signature">
+                이레공조주식회사 대표이사 <span>장 용 재</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 조직 현황 섹션 -->
+    <div class="container" id="organization" style="padding-top: 0;">
+        <span class="sub-tag">Organization</span>
+        <h2 class="section-title">조직 현황</h2>
+        <div class="org-chart-wrapper">
+            <!-- 대표이사 -->
+            <div class="org-ceo">대표이사</div>
+            <div class="org-line-v"></div>
+            <div class="org-line-h"></div>
+
+            <!-- 부문별 카드 그리드 -->
+            <div class="org-sector-grid">
+                
+                <!-- 1. 관리부문 -->
+                <div class="org-sector-card">
+                    <div class="org-sector-title">관리부문</div>
+                    <div class="org-team-group">
+                        <div class="org-team-item">총무</div>
+                        <div class="org-team-item">경리, 인사</div>
+                    </div>
+                </div>
+
+                <!-- 2. 영업부문 -->
+                <div class="org-sector-card">
+                    <div class="org-sector-title">영업부문</div>
+                    <div class="org-team-group">
+                        <div class="org-team-item">기술영업팀</div>
+                        <div class="org-team-item">영업</div>
+                        <div class="org-team-item">출하</div>
+                    </div>
+                </div>
+
+                <!-- 3. 공장부문 -->
+                <div class="org-sector-card">
+                    <div class="org-sector-title">공장부문</div>
+                    <div class="org-team-group">
+                        <div class="org-team-item">품질관리팀</div>
+                        <div class="org-team-item sub-item">• 공정</div>
+                        <div class="org-team-item sub-item">• 출하</div>
+                        <div class="org-team-item sub-item">• 품질시스템 관리</div>
+                        
+                        <div class="org-sub-header">제조공정 라인</div>
+                        <div class="org-team-item process-line">코어 조립라인</div>
+                        <div class="org-team-item process-line">헤더파이프라인</div>
+                        <div class="org-team-item process-line">브레이징라인</div>
+                        <div class="org-team-item process-line">레이저 자동용접라인</div>
+                        
+                        <div class="org-sub-header" style="margin-top: 4px;">생산 및 자재 관리</div>
+                        <div class="org-team-item">생산기술</div>
+                        <div class="org-team-item">생산관리</div>
+                        <div class="org-team-item">자재관리</div>
+                        <div class="org-team-item">구매관리</div>
+                    </div>
+                </div>
+
+                <!-- 4. 기술 연구소 -->
+                <div class="org-sector-card">
+                    <div class="org-sector-title">기술 연구소</div>
+                    <div class="org-team-group">
+                        <div class="org-team-item">연구팀</div>
+                        <div class="org-team-item">시험실</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 인원 현황 표 -->
+            <div class="headcount-table-wrapper">
+                <div class="headcount-title">
+                    <span style="color: #ef4444;">◆</span> 인원 현황
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="headcount-table">
+                        <thead>
+                            <tr>
+                                <th>부서</th>
+                                <th>임원</th>
+                                <th>영업부</th>
+                                <th>품질보증부</th>
+                                <th>생산관리</th>
+                                <th>생산기술</th>
+                                <th>Core 조립</th>
+                                <th>HDR 조립</th>
+                                <th>자재관리</th>
+                                <th>총원</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>인원</th>
+                                <td>2명</td>
+                                <td>1명</td>
+                                <td>2명</td>
+                                <td>1명</td>
+                                <td>1명</td>
+                                <td>8명</td>
+                                <td>10명</td>
+                                <td>1명</td>
+                                <td>26명</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 생산 CAPA & 주요 설비 현황 섹션 [신규 추가] -->
+    <div class="container" id="capa" style="padding-top: 0;">
+        <span class="sub-tag">Capacity & Facilities</span>
+        <h2 class="section-title">생산 CAPA 및 설비 현황</h2>
+        
+        <!-- 생산 CAPA 요약 카드 -->
+        <div class="capa-grid">
+            <div class="capa-card">
+                <h4>브레이징 연간 CAPA</h4>
+                <div class="number">600,000<span class="unit">대 / 년</span></div>
+            </div>
+            <div class="capa-card">
+                <h4>연속 브레이징 노(Furnace)</h4>
+                <div class="number">2<span class="unit">기 가동</span></div>
+            </div>
+            <div class="capa-card">
+                <h4>레이저 자동용접 로봇</h4>
+                <div class="number">3<span class="unit">기 보유</span></div>
+            </div>
+            <div class="capa-card">
+                <h4>목표 생산 효율</h4>
+                <div class="number">98.5<span class="unit">%</span></div>
+            </div>
+        </div>
+
+        <!-- 주요 설비 보유 현황 표 -->
+        <h3 style="color: #ffffff; font-size: 18px; margin-bottom: 12px; font-weight: 700;">주요 생산 및 검사 설비 현황</h3>
+        <div style="overflow-x: auto;">
+            <table class="facility-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">구분</th>
+                        <th style="width: 30%;">설비명</th>
+                        <th style="width: 15%;">수량</th>
+                        <th style="width: 35%;">비고 / 용도</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>브레이징 라인</td>
+                        <td>NB FURNACE (연속 브레이징 노)</td>
+                        <td>2기</td>
+                        <td>알루미늄 열교환기 정밀 브레이징 접합</td>
+                    </tr>
+                    <tr>
+                        <td>용접 라인</td>
+                        <td>Laser 자동 용접 로봇 (1~3호기)</td>
+                        <td>3기</td>
+                        <td>파이프 및 헤더 자동 고정밀 용접</td>
+                    </tr>
+                    <tr>
+                        <td>코어 조립 라인</td>
+                        <td>Core Assembly Machine (조립기)</td>
+                        <td>4대</td>
+                        <td>튜브/핀 고속 정밀 피치 조립</td>
+                    </tr>
+                    <tr>
+                        <td>헤더 파이프 라인</td>
+                        <td>HDR Pipe Auto Bending & Forming Machine</td>
+                        <td>2대</td>
+                        <td>파이프 밴딩 및 성형, 가공 자동화</td>
+                    </tr>
+                    <tr>
+                        <td>검사/시험 설비</td>
+                        <td>3D 삼차원 측정기 (CMM)</td>
+                        <td>1대</td>
+                        <td>정밀 치수 검사 및 품질 보증</td>
+                    </tr>
+                    <tr>
+                        <td>검사/시험 설비</td>
+                        <td>수중 기밀 시험기 / 내압 시험기</td>
+                        <td>3대</td>
+                        <td>열교환기 누설(Leak) 및 고압 테스트</td>
+                    </tr>
+                    <tr>
+                        <td>품질 관리 System</td>
+                        <td>스마트팩토리 MES / POP 시스템</td>
+                        <td>1식</td>
+                        <td>실시간 생산 데이터 추적 및 품질 모니터링</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -534,6 +1051,14 @@
             <tr>
                 <th>주요 사업</th>
                 <td>자동차용 열교환기, EV 전장 쿨링 부품, 알루미늄 브레이징 제조</td>
+            </tr>
+            <tr>
+                <th>생산 CAPA</th>
+                <td>연간 약 600,000대 (열교환기 기준)</td>
+            </tr>
+            <tr>
+                <th>주요 생산 공정라인</th>
+                <td>코어 조립라인, 헤더파이프라인, 브레이징라인, 레이저 자동용접라인</td>
             </tr>
             <tr>
                 <th>주요 설비</th>
@@ -677,9 +1202,9 @@
         <p style="margin-top: 15px; font-size: 11px;">Copyright © Ire Climate Control Inc. All Rights Reserved.</p>
     </footer>
 
-    <!-- 마우스 반응 입자 애니메이션 + 게시판 스크립트 -->
+    <!-- 스크립트 -->
     <script>
-        /* 1. 배경 애니메이션 */
+        /* 배경 애니메이션 */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -775,7 +1300,7 @@
         }
         animate();
 
-        /* 2. 자체 상담 문의 등록 스크립트 */
+        /* 상담 문의 등록 스크립트 */
         function addComment() {
             const name = document.getElementById('writer-name').value;
             const phone = document.getElementById('writer-phone').value;
